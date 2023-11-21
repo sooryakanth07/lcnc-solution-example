@@ -1,1 +1,330 @@
-There was an error committing your changes: Sorry, a file exists where you’re trying to create a subdirectory. Choose a new path and try again.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ChannelManger</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60px;
+            font-family: Verdana, sans-serif;
+            padding: 20px;
+            background-color: transparent;
+            width: 100px;
+        }
+
+        .form-container {
+            display: flex;
+            margin: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-right: 20px;
+            position: relative;
+        }
+
+        .label {
+            margin-bottom: 5px;
+            font-weight: bold;
+            display: none;
+        }
+
+        .select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 200px;
+            max-height: 150px;
+            overflow-y: auto;
+            font-size: 16px;
+            position: relative;
+            background-color: transparent;
+        }
+
+        .floating-select {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 2;
+            max-height: 70px;
+            overflow-y: auto;
+            background-color: transparent;
+            border: 1px solid #ccc;
+            border-top: none;
+            border-radius: 0 0 4px 4px;
+            display: none;
+        }
+
+        .select:focus + .floating-select {
+            display: block;
+        }
+
+        .chosen-container .chosen-results {
+            max-height:76px !important;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>-->
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css">-->
+</head>
+<body>
+
+<div class="container">
+    <label class="label" style="margin-right: 20px; font-size: 14px;font-family: Verdana, sans-serif; color: black; align-self: center;">Filter Options:</label>
+    <div class="form-container">
+        <div class="form-group">
+            <select id="single-select-partner" class="select">
+                <option value="">Deal  Partner Name</option>
+            </select>
+            <div class="floating-select" id="floating-partner-select">
+                <option value="">Deal Partner Name</option>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <select id="single-select-company" class="select">
+                <option value="">Deal  Company Name</option>
+            </select>
+            <div class="floating-select" id="floating-company-select">
+                <option value="">Deal Company Name</option>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <select id="single-select-stage" class="select">
+                <option value="">Deal  Stage</option>
+                <option value="New">New</option>
+                <option value="Accepted">Accepted</option>
+                <option value="Working">Working</option>
+                <option value="Proposal">Proposal</option>
+                <option value="Contracting">Contracting</option>
+                <option value="Closed Won">Closed Won</option>
+                <option value="Closed Lost">Closed Lost</option>
+            </select>
+            <div class="floating-select">
+                    <option value="">Deal  Stage</option>
+                    <option value="New">New</option>
+                    <option value="Accepted">Accepted</option>
+                    <option value="Working">Working</option>
+                    <option value="Proposal">Proposal</option>
+                    <option value="Contracting">Contracting</option>
+                    <option value="Closed Won">Closed Won</option>
+                    <option value="Closed Lost">Closed Lost</option>
+                </div>
+        </div>
+
+        <div class="form-group">
+            <select id="single-select-status" class="select">
+                <option value="">Deal  Status</option>
+                <option value="Open">Open</option>
+                <option value="Won">Won</option>
+                <option value="Lost">Lost</option>
+            </select>
+            <div class="floating-select">
+                    <option value="">Deal  Status</option>
+                    <option value="Open">Open</option>
+                    <option value="Won">Won</option>
+                    <option value="Lost">Lost</option>
+                </div>
+        </div>
+
+        <div class="form-group">
+            <select id="single-select-months" class="select">
+                <option value="">Deal Closed Months</option>
+                <option value="Jan">January</option>
+                <option value="Feb">February</option>
+                <option value="Mar">March</option>
+                <option value="Apr">April</option>
+                <option value="May">May</option>
+                <option value="Jun">June</option>
+                <option value="Jul">July</option>
+                <option value="Aug">August</option>
+                <option value="Sep">September</option>
+                <option value="Oct">October</option>
+                <option value="Nov">November</option>
+                <option value="Dec">December</option>
+            </select>
+            <div class="floating-select">
+                    <option value="">Deal Closed Months</option>
+                    <option value="Jan">January</option>
+                    <option value="Feb">February</option>
+                    <option value="Mar">March</option>
+                    <option value="Apr">April</option>
+                    <option value="May">May</option>
+                    <option value="Jun">June</option>
+                    <option value="Jul">July</option>
+                    <option value="Aug">August</option>
+                    <option value="Sep">September</option>
+                    <option value="Oct">October</option>
+                    <option value="Nov">November</option>
+                    <option value="Dec">December</option>
+                </div>
+        </div>
+    </div>
+</div>
+<script src="https://unpkg.com/@kissflow/lowcode-client-sdk@latest/dist/kfsdk.umd.js"></script>
+<script type="text/javascript">
+    let kf;
+      window.onload = async function () {
+        kf = await window.kf.initialize();
+        getpagecount();
+        //getpartners();
+        //getcompanies();
+        setFilters();
+    };
+    async function getpagecount(){
+        console.log('getpagecount');
+        const { Name, Email, _id } = kf.user;
+        let accountid = kf.account._id;
+        let config = {"method":"GET"};
+
+        let listresponse = await kf.api("/form/2/" + accountid + "/Partner_DealSummaryPage_A00/view/Partner_View_for_Deal_Summary_Page_A00/list?_application_id=Partner_A00",config);
+        let count = listresponse.count;
+        const totalCount = parseInt(count, 10);
+        const itemsPerPage = 100;
+        const totalPages = Math.ceil(totalCount / itemsPerPage);
+        console.log("getpagecount", totalPages);
+        const itemList = [];
+        const itemListpartner = [];
+        for (let page = 1; page <= totalPages; page++) {
+            const startItem = (page - 1) * itemsPerPage + 1;
+            const endItem = Math.min(page * itemsPerPage, totalCount);
+            //console.log(`Page ${page}: Items ${startItem} to ${endItem}`);
+            getcompanies(page, itemList);
+        }
+        for (let page = 1; page <= totalPages; page++) {
+            const startItem = (page - 1) * itemsPerPage + 1;
+            const endItem = Math.min(page * itemsPerPage, totalCount);
+            //console.log(`Page ${page}: Items ${startItem} to ${endItem}`);
+            getpartners(page, itemListpartner);
+        }
+    };
+
+    async function getpartners(page, itemListpartner){
+        const defaultOption = document.createElement('option');
+
+        console.log('Partner_Name');
+        const { Name, Email, _id } = kf.user;
+        var accountid = kf.account._id;
+        var config = {"method":"GET"};
+        //var listresponse_comp = await kf.api('/form/2/' + accountid + '/Partner_DealSummaryPage_A00/view/Deal_List_ChannelManager_A00/list?_application_id=Partner_A00', config );
+        let listresponse_comp = await kf.api('/form/2/' + accountid + '/Partner_DealSummaryPage_A00/view/Deal_List_ChannelManager_A00/list?page_number='+page+'&page_size=100&_application_id=Partner_A00', config );
+        console.log('listresponse_comp:', listresponse_comp);
+        for (const item of listresponse_comp.Data) {
+            if(item.Partner_Name){
+                if (itemListpartner.includes(item.Partner_Name)) {
+                    console.log(`Item '${item.Partner_Name}' already exists in the list.`);
+                } else {
+                    itemListpartner.push(item.Partner_Name);
+                    console.log(`Item '${item.Partner_Name}' added to the list.`);
+                    console.log('itemList', itemListpartner);
+                    console.log('item.Partner_Name', item.Partner_Name)
+                    optionText = item.Partner_Name;
+                    optionValue = item.Partner_Name;
+                    $('#single-select-partner').append(`<option value="${optionValue}">
+                                            ${optionText}
+                                        </option>`);
+                    $('#floating-partner-select').append(`<option value="${optionValue}">
+                                            ${optionText}
+                                        </option>`);
+                    $('#single_select_partner_chosen .chosen-results').append("<li>"+item.Partner_Name+"</li>");
+                    $('#single-select-partner').trigger('chosen:updated');
+                }
+            }
+        }
+    };
+    
+    async function getcompanies(page, itemList){
+
+        // Create a default option
+        const defaultOption = document.createElement('option');
+
+        console.log('getcompanies');
+        const { Name, Email, _id } = kf.user;
+        let accountid = kf.account._id;
+        let config = {"method":"GET"};
+
+        // let listresponse_comp = await kf.api('/form/2/' + accountid + '/Partner_DealSummaryPage_A00/view/Partner_View_for_Deal_Summary_Page_A00/list?_application_id=Partner_A00', config );
+        //let listresponse_comp = await kf.api('/form/2/' + accountid + '/Partner_DealSummaryPage_A00/view/Partner_View_for_Deal_Summary_Page_A00/list?page_number='+page+'&page_size=100&_application_id=Partner_A00', config );
+        let listresponse_comp = await kf.api('/form/2/' + accountid + '/Partner_DealSummaryPage_A00/view/Deal_List_ChannelManager_A00/list?page_number='+page+'&page_size=100&_application_id=Partner_A00', config );
+        console.log('listresponse_comp:', listresponse_comp);
+        //const itemList = [];
+        for (const item of listresponse_comp.Data) {
+            if(item.Customer_Name){
+                if (itemList.includes(item.Customer_Name)) {
+                    console.log(`Item '${item.Customer_Name}' already exists in the list.`);
+                } else {
+                    itemList.push(item.Customer_Name);
+                    console.log(`Item '${item.Customer_Name}' added to the list.`);
+                    console.log('itemList', itemList);
+                    console.log('item.Customer_Name', item.Customer_Name)
+                    optionText = item.Customer_Name;
+                    optionValue = item.Customer_Name;
+                    $('#single-select-company').append(`<option value="${optionValue}">
+                                            ${optionText}
+                                        </option>`);
+                    $('#floating-company-select').append(`<option value="${optionValue}">
+                                            ${optionText}
+                                        </option>`);
+                    $('#single_select_company_chosen .chosen-results').append("<li>"+item.Customer_Name+"</li>");
+                    $('#single-select-company').trigger('chosen:updated');
+                }
+            }
+        }
+        };
+
+    async function setFilters(){
+        $(document).ready(function() {
+            $(".select").chosen();
+
+            // Variables to store selected values
+            var selectedPartnerValue;
+            var selectedCompanyValue;
+            var selectedStageValue;
+            var selectedStatusValue;
+            var selectedMonthValue;
+
+            // Event handlers for dropdown changes
+            $('#single-select-partner').on('change', function() {
+                selectedPartnerValue = $(this).val();
+                console.log('Partner Name:', selectedPartnerValue);
+                kf.app.setVariable("Fcm_PartnerName", selectedPartnerValue);
+            });
+
+            $('#single-select-company').on('change', function() {
+                selectedCompanyValue = $(this).val();
+                console.log('Company Name:', selectedCompanyValue);
+                kf.app.setVariable("Fcm_CompanyName", selectedCompanyValue);
+            });
+
+            $('#single-select-stage').on('change', function() {
+                selectedStageValue = $(this).val();
+                console.log('Stage:', selectedStageValue);
+                kf.app.setVariable("FCM_PRM_Stage", selectedStageValue);
+            });
+
+            $('#single-select-status').on('change', function() {
+                selectedStatusValue = $(this).val();
+                console.log('Status:', selectedStatusValue);
+                kf.app.setVariable("Fcm_status", selectedStatusValue);
+            });
+
+            $('#single-select-months').on('change', function() {
+                selectedMonthValue = $(this).val();
+                console.log('Select Months:', selectedMonthValue);
+                kf.app.setVariable("test_companyname", selectedMonthValue);
+            });
+        });
+    };
+</script>
+
+</body>
+</html>
