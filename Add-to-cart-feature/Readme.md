@@ -19,7 +19,7 @@ This is similar to the Amazon 'Add to cart' feature, however, in this solution, 
     - Product instance ID
 
 ## Page: 'Product Catalog'
-- Component: User 'Product Catalog' Data form's Gallery view
+- Component: 'Product Catalog' Data form's Gallery view
 - Popup:
    - Create Popup parameteres (popinstanceid & popactiveinstanceid) in the **header**.
    - Then, pass them to the popup **body** inputs (Instance Id, Activity Instance Id)
