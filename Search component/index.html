@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Styling for the search bar */
+        .search-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+        }
+
+        .search-input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 300px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin-left: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <input type="text" id="searchInput" class="search-input" placeholder="Search Assets...">
+        <button onclick="displaySearchTerm()" class="search-button">Search</button>
+    </div>
+
+    <script src="https://unpkg.com/@kissflow/lowcode-client-sdk@latest/dist/kfsdk.umd.js"></script>
+    <script>
+
+        let kf;
+        window.onload = async function () {
+            kf = await window.kf.initialize();
+        };
+
+        function displaySearchTerm() {
+            var searchTerm = document.getElementById("searchInput").value;
+            let value = kf.app.setVariable("Search", searchTerm); // replace the "Search" with the variable you created
+        }
+        
+    </script>
+</body>
+</html>
